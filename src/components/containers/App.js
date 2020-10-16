@@ -1,7 +1,8 @@
 import React from 'react';
+import RenPlayer from './RenPlayer';
 
 const App = () => (
-  <div>Start here!</div>
-)
+  <RenPlayer />
+);
 
 export default App;
