@@ -1,12 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledRenPlayer = styled.div`
-  background: ${props => props.theme.bgcolor}; /* #353535; */
-  border: ${props => props.theme.border};
+  background: ${props => props.theme.bgcolor}
+  border: ${props => props.theme.border}
   max-width: 1800px;
   margin: 0 auto;
   display: -webkit-box;
-  display: -ms-flexbox;
+  display: -ms-box;
   display: flex;
   flex-direction: row;
   max-height: 863px;
@@ -16,6 +16,7 @@ const StyledRenPlayer = styled.div`
     display: block;
     max-height: 10000px;
   }
+
 `;
 
 export default StyledRenPlayer;
