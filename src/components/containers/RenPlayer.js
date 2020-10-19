@@ -26,12 +26,37 @@ const themeLight = {
 
 
 const RenPlayer = props => {
+    
+    const nightModeCallback = () => {
+
+    }
+
+    const endCallback = () => {
+
+    }
+
+    const progressCallback = () => {
+
+    }
+
     return (
         <ThemeProvider theme={state.nightMode ? theme : themeLight}>
-            <StyledRenPlayer>
-                <Video />
-                <Playlist />
-            </StyledRenPlayer>
+            {state.videos !== null ? (
+                <StyledRenPlayer>
+                    <Video 
+                        active={state.activeVideo}
+                        autoplay={state.autoplay}
+                        endCallback={endCallback}
+                        progressCallback={progressCallback}
+                    />
+                    <Playlist 
+                        videos={state.videos}
+                        active={state.activeVideo}
+                        nightModeCallback={nightModeCallback}
+                        nightMode={state.nightMode}
+                    />
+                </StyledRenPlayer>
+            ) : null }
         </ThemeProvider>
     );
 }
