@@ -25,7 +25,7 @@ const themeLight = {
 }
 
 
-const RenPlayer = ({ match, history, location }) => {
+const RenPlayer = props => {
     const videos = JSON.parse(document.querySelector(`[name="videos]`).value);
     const savedState = JSON.parse(localStorage.getItem(`${videos.playlistId}`));
 
@@ -54,12 +54,12 @@ const RenPlayer = ({ match, history, location }) => {
                 autoplay: location.autoplay
             }));
         } else {
-           history.push({
+           props.history.push({
             pathname: `/$[state.activeVideo.id]`,
             autoplay: false
            })
         }
-    }, [history, location.autoplay, match.params.activeVideo, state.activeVideo.id, state.videos]);
+    }, [props.history, props.location.autoplay, props.match.params.activeVideo, state.activeVideo.id, state.videos]);
 
     const nightModeCallback = () => {
         setState(prevState => ({
