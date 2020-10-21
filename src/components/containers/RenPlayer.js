@@ -58,15 +58,37 @@ const RenPlayer = ({ match, history, location }) => {
     }, [history, location.autoplay, match.params.activeVideo, state.activeVideo.id, state.videos]);
 
     const nightModeCallback = () => {
-
+        setState(prevState => ({
+            ...prevState,
+            nightMode: !prevState.nightMode
+        }));
     }
 
     const endCallback = () => {
+        const videoId = props.match.params.activeVideo;
+        const currentVideoIndex = state.videos.findIndex(
+            video => video.id === videoId
+        );
 
+        const nextVideo = (currentVideoIndex === (state.videos.length - 1)) ? 0 : (currentVideoIndex + 1);
+
+        props.history.push({
+            pathname: `${state.vidoes[nextVideo].id}`,
+            autoplay: false
+        });
     }
 
-    const progressCallback = () => {
-
+    const progressCallback = event => {
+        if ((event.playedSeconds > 10) && event.playedSeconds < 11) {
+            setState({
+                ...state,
+                videos: state.videos.map((element) => {
+                    return element.id === state.activeVideo.id
+                    ? {...element, played: true}
+                    : element;
+                })
+            });
+        }
     }
 
     return (
